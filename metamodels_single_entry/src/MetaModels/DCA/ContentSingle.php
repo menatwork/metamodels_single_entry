@@ -29,6 +29,11 @@ class ContentSingle extends Content
         $factory       = $this->getServiceContainer()->getFactory();
         $metaModelName = $factory->translateIdToMetaModelName($objDc->activeRecord->metamodel);
         $objMetaModel  = $factory->getMetaModel($metaModelName);
+        
+         // Check if we have a metamodels.
+        if ($objMetaModel == null) {
+            return $return;
+        }
 
         $attributes = $this->getDatabase()
             ->prepare('SELECT * FROM tl_metamodel_attribute WHERE pid=? AND use_for_single_item = 1 ORDER BY sorting')
