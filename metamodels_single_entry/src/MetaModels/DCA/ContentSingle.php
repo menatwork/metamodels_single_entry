@@ -46,6 +46,7 @@ class ContentSingle extends Content
                 $id     = $item->get('id');
                 $titles = array();
 
+                $attributes->reset();
                 while ($attributes->next()) {
                     $parsedValue = $item->parseAttribute($attributes->colname, 'text');
                     $titles[]    = $parsedValue['text'];
